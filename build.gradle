@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'uk.co.rob5underscores'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    implementation name: 'demo'
+    implementation name: 'diva'
+    implementation name: 'domains'
+    implementation name: 'experimentalDomains'
+    implementation name: 'ptsupport'
+    implementation name: 'vergil'
+    implementation name: 'wireless'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+application {
+    mainClassName = 'ptolemy.vergil.VergilApplication'
+}
