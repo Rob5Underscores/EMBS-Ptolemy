@@ -1,0 +1,78 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE entity PUBLIC "-//UC Berkeley//DTD MoML 1//EN"
+    "http://ptolemy.eecs.berkeley.edu/xml/dtd/MoML_1.dtd">
+<entity name="ex2" class="ptolemy.actor.TypedCompositeActor">
+    <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="6.0.2">
+    </property>
+    <property name="DE Director" class="ptolemy.domains.de.kernel.DEDirector">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{100, 35}">
+        </property>
+    </property>
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={287, 199, 1168, 745}, maximized=false}">
+    </property>
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[918, 635]">
+    </property>
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="1.0">
+    </property>
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{459.0, 317.5}">
+    </property>
+    <entity name="Clock A" class="ptolemy.actor.lib.Clock">
+        <property name="stopTime" class="ptolemy.data.expr.Parameter" value="30.0">
+        </property>
+        <property name="period" class="ptolemy.data.expr.Parameter" value="3.0">
+        </property>
+        <property name="values" class="ptolemy.data.expr.Parameter" value="{0, 10}">
+        </property>
+        <doc>Create a set of pulses</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{100.0, 105.0}">
+        </property>
+    </entity>
+    <entity name="Clock B" class="ptolemy.actor.lib.Clock">
+        <property name="stopTime" class="ptolemy.data.expr.Parameter" value="30">
+        </property>
+        <property name="period" class="ptolemy.data.expr.Parameter" value="4.0">
+        </property>
+        <property name="values" class="ptolemy.data.expr.Parameter" value="{3, 7}">
+        </property>
+        <doc>Create a set of pulses</doc>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[100.0, 220.0]">
+        </property>
+    </entity>
+    <entity name="TimedPlotter" class="ptolemy.actor.lib.gui.TimedPlotter">
+        <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={1470, 548, 1240, 549}, maximized=false}">
+        </property>
+        <property name="_plotSize" class="ptolemy.actor.gui.SizeAttribute" value="[1240, 505]">
+        </property>
+        <property name="_location" class="ptolemy.kernel.util.Location" value="{580, 155}">
+        </property>
+        <property name="_expertMode" class="ptolemy.kernel.util.SingletonAttribute">
+        </property>
+        <port name="input" class="ptolemy.actor.TypedIOPort">
+            <property name="input"/>
+            <property name="multiport"/>
+            <property name="_showName" class="ptolemy.data.expr.SingletonParameter" value="true">
+            </property>
+        </port>
+        <configure>
+<?plotml <!DOCTYPE plot PUBLIC "-//UC Berkeley//DTD PlotML 1//EN"
+"http://ptolemy.eecs.berkeley.edu/xml/dtd/PlotML_1.dtd">
+<plot>
+<title>TimedPlotter</title>
+<xRange min="0.0" max="30.0"/>
+<yRange min="0.0" max="10.0"/>
+</plot>?>
+        </configure>
+    </entity>
+    <relation name="relation" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <relation name="relation3" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="1">
+        </property>
+    </relation>
+    <link port="Clock A.output" relation="relation"/>
+    <link port="Clock B.output" relation="relation3"/>
+    <link port="TimedPlotter.input" relation="relation"/>
+    <link port="TimedPlotter.input" relation="relation3"/>
+</entity>
