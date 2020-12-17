@@ -8,8 +8,7 @@ import ptolemy.kernel.util.NameDuplicationException;
 
 public class ExamplePipe extends TypedAtomicActor {
 
-    protected TypedIOPort input;
-    protected TypedIOPort output;
+    protected TypedIOPort input, output;
     protected Parameter param;
 
     public ExamplePipe(CompositeEntity container, String name) throws NameDuplicationException, IllegalActionException {

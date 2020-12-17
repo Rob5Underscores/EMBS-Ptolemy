@@ -12,8 +12,7 @@ import static java.lang.Integer.parseInt;
 
 public class DiscardChannel extends TypedAtomicActor {
 
-    protected TypedIOPort input;
-    protected TypedIOPort output;
+    protected TypedIOPort input, output;
     protected Parameter discardPercent;
 
     /**
@@ -33,8 +32,7 @@ public class DiscardChannel extends TypedAtomicActor {
     public void fire() throws IllegalActionException{
         Random rand = new Random();
         Token t = input.get(0);
-        System.out.print(discardPercent.getValueAsString());
-        System.out.print(discardPercent.getExpression());
+
         if(parseInt(discardPercent.getExpression()) >= rand.nextInt(100)) {
             return;
         }
